@@ -144,8 +144,7 @@ export default function GamepadTester() {
     if(vibPlaying){await stopVib();return}
     try{const gp=navigator.getGamepads()[sel] as any;if(!gp?.vibrationActuator)return;const play=()=>gp.vibrationActuator.playEffect('dual-rumble',{startDelay:0,duration:infVib?3000:800,weakMagnitude:1,strongMagnitude:1});await play();setVibPlaying(true);if(infVib)vibInt.current=setInterval(play,2800);else setTimeout(()=>setVibPlaying(false),900)}catch(e){}
   }
-  const startCirc=()=>{setLPath([]);setRPath([]);setCirc({l:null,r:null});setShowP(true);setTesting(true);setTimeout(()=>setTesting(false),4000)}
-  const clearPaths=()=>{setLPath([]);setRPath([]);setCirc({l:null,r:null});setShowP(false)}
+
 
   const isPS=ids[sel].toLowerCase().match(/playstation|wireless controller|dualshock|dualsense/)
 
