@@ -146,7 +146,7 @@ export default function GamepadTester() {
   }
 
 
-  const isPS=ids[sel].toLowerCase().match(/playstation|wireless controller|dualshock|dualsense/)
+  const isPS = (ids[sel] || '').toLowerCase().match(/playstation|wireless controller|dualshock|dualsense/)
 
   return (
     <div style={{display:'flex',flexDirection:'column',gap:8}}>
