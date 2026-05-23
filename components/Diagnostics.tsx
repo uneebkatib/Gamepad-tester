@@ -27,7 +27,8 @@ export default function Diagnostics() {
       const gps = navigator.getGamepads()
       const s=[false,false,false,false], n=['','','','']
       for(let i=0;i<4;i++){
-        if(gps[i]?.connected){ s[i]=true; n[i]=(gps[i]!.id||'').split('(')[0].trim()||'Gamepad' }
+        const gp = gps[i]
+        if(gp && gp.connected){ s[i]=true; n[i]=(gp.id||'').split('(')[0].trim()||'Gamepad' }
       }
       setStatus(s); setNames(n)
     } catch(e){}
