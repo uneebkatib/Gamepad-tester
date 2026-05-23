@@ -96,7 +96,20 @@ export default function GamepadTester() {
   useEffect(()=>{testCircRef.current=testCirc},[testCirc])
 
   const checkConn=useCallback(()=>{
-    try{const gps=navigator.getGamepads();const s=[false,false,false,false],n=['','','',''],i=['','','',''];for(let x=0;x<4;x++)if(gps[x]?.connected){s[x]=true;const id=gps[x]!.id||'';n[x]=id.split('(')[0].trim().slice(0,28)||'Gamepad';i[x]=id};setConn(s);setNames(n);setIds(i)}catch(e){}
+    try{
+      const gps=navigator.getGamepads()
+      const s=[false,false,false,false],n=['','','',''],i=['','','','']
+      for(let x=0;x<4;x++){
+        const gp=gps[x]
+        if(gp && gp.connected){
+          s[x]=true
+          const id=(gp as any).id||''
+          n[x]=id.split('(')[0].trim().slice(0,28)||'Gamepad'
+          i[x]=id
+        }
+      }
+      setConn(s);setNames(n);setIds(i)
+    }catch(e){}
   },[])
 
   const tick=useCallback(()=>{
