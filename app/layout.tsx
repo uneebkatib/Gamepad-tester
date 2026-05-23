@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gamepadtester.live'
@@ -106,6 +107,7 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   )
