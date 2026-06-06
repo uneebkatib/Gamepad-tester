@@ -1,0 +1,218 @@
+import React from 'react'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import { articles, authors } from '@/lib/blogData'
+
+interface PageProps {
+  params: {
+    slug: string
+  }
+}
+
+// Generate static params for Next.js build-time page rendering (SEO indexation boost)
+export function generateStaticParams() {
+  return articles.map((art) => ({
+    slug: art.slug,
+  }))
+}
+
+export default function ArticlePage({ params }: PageProps) {
+  const article = articles.find((a) => a.slug === params.slug)
+
+  if (!article) {
+    notFound()
+  }
+
+  const author = authors.find((a) => a.id === article.authorId)
+  const reviewer = authors.find((a) => a.id === article.reviewerId)
+  
+  // JSON-LD structured schema for search engines (EEAT boost)
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    'headline': article.title,
+    'description': article.summary,
+    'datePublished': new Date(article.date).toISOString().split('T')[0],
+    'author': author ? {
+      '@type': 'Person',
+      'name': author.name,
+      'jobTitle': author.role,
+      'email': author.email
+    } : undefined,
+    'reviewedBy': reviewer ? {
+      '@type': 'Person',
+      'name': reviewer.name,
+      'jobTitle': reviewer.role,
+      'email': reviewer.email
+    } : undefined,
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'GamepadTester.live',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://gamepadtester.live/logo.png' // fallback URL
+      }
+    }
+  }
+
+  const relatedArticles = articles.filter((a) => a.slug !== article.slug).slice(0, 2)
+
+  return (
+    <main className="min-h-screen bg-background flex flex-col font-sans">
+      {/* Insert JSON-LD for Search Indexer */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
+      <Navigation />
+      
+      <div className="container-custom py-8 flex-1">
+        {/* Back Link */}
+        <Link 
+          href="/blog" 
+          className="inline-flex items-center gap-1.5 text-xs text-foreground-muted hover:text-primary mb-6 transition"
+        >
+          ← Back to Blog &amp; Repair Guides
+        </Link>
+
+        <div className="grid lg:grid-cols-4 gap-8">
+          {/* Main Article Content */}
+          <div className="lg:col-span-3">
+            <article className="bg-surface border border-border rounded-2xl p-6 sm:p-8 shadow-sm">
+              {/* Category */}
+              <div className="flex items-center gap-2 text-xs font-semibold text-primary uppercase tracking-wider mb-4">
+                <span>{article.icon} {article.category}</span>
+              </div>
+
+              {/* Title */}
+              <h1 className="text-3xl sm:text-5xl font-black font-display text-foreground mb-6 leading-tight">
+                {article.title}
+              </h1>
+
+              {/* Meta details */}
+              <div className="flex flex-wrap gap-y-2 items-center gap-x-4 border-b border-border/60 pb-6 mb-6 text-xs text-foreground-muted">
+                <span>Published: <strong>{article.date}</strong></span>
+                <span>•</span>
+                <span>Read Time: <strong>{article.readTime}</strong></span>
+                <span>•</span>
+                <span className="flex items-center gap-1 bg-success/15 border border-success/35 text-success px-2.5 py-0.5 rounded-full font-semibold">
+                  ✓ Fact-checked by: {reviewer ? reviewer.name : article.reviewerId}
+                </span>
+              </div>
+
+              {/* Summary Block */}
+              <div className="text-base text-foreground font-medium leading-relaxed bg-background/50 border-l-4 border-primary p-5 rounded-r-xl mb-6">
+                {article.summary}
+              </div>
+
+              {/* Paragraphs content */}
+              <div className="prose dark:prose-invert max-w-none text-foreground-secondary text-sm md:text-base leading-relaxed space-y-6 font-sans">
+                {article.content.map((para, index) => (
+                  <p key={index}>{para}</p>
+                ))}
+              </div>
+
+              {/* Tags */}
+              <div className="mt-8 pt-6 border-t border-border/60 flex flex-wrap gap-2">
+                {article.tags.map(tag => (
+                  <span key={tag} className="bg-background border border-border/80 px-2 py-0.5 rounded text-xs text-foreground-muted">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            </article>
+            
+            {/* Disclaimer */}
+            <div className="bg-surface/50 border border-border/50 rounded-xl p-4 mt-6 text-xs text-foreground-muted leading-relaxed">
+              <strong className="text-foreground block mb-1">🛠️ Hardware Modification Disclaimer:</strong>
+              DIY diagnostic checkups and repairs carry safety risks. Ensure all power supplies are unplugged and follow safety procedures. GamepadTester.live is not liable for components damaged during disassembly or repair attempts.
+            </div>
+          </div>
+
+          {/* Sidebar: Author Card, Reviewer Card & Related Articles */}
+          <div className="lg:col-span-1 space-y-6">
+            {/* Author details */}
+            {author && (
+              <div className="bg-surface border border-border rounded-xl p-5 shadow-sm">
+                <span className="text-[10px] font-bold font-display text-primary uppercase tracking-widest block mb-3">Written By</span>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xl bg-background border border-border/80 w-10 h-10 rounded-full flex items-center justify-center">{author.avatar}</span>
+                  <div>
+                    <Link href={`/author/${author.id}`} className="text-xs font-bold text-foreground font-display hover:text-primary transition leading-tight block">
+                      {author.name}
+                    </Link>
+                    <span className="text-[9px] text-foreground-muted">{author.role}</span>
+                  </div>
+                </div>
+                <p className="text-[10px] text-foreground-secondary leading-relaxed mb-4">
+                  {author.bio}
+                </p>
+                <div className="space-y-1.5 border-t border-border/60 pt-3">
+                  {author.credentials.slice(0, 1).map(c => (
+                    <span key={c} className="block text-[8px] text-foreground-muted">
+                      🏅 {c}
+                    </span>
+                  ))}
+                  <a href={`mailto:${author.email}`} className="block text-[9px] text-accent hover:underline mt-1">
+                    ✉️ {author.email}
+                  </a>
+                </div>
+              </div>
+            )}
+
+            {/* Reviewer details */}
+            {reviewer && (
+              <div className="bg-surface border border-border rounded-xl p-5 shadow-sm">
+                <span className="text-[10px] font-bold font-display text-success uppercase tracking-widest block mb-3">Technical Reviewer</span>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xl bg-background border border-border/80 w-10 h-10 rounded-full flex items-center justify-center">{reviewer.avatar}</span>
+                  <div>
+                    <Link href={`/author/${reviewer.id}`} className="text-xs font-bold text-foreground font-display hover:text-primary transition leading-tight block">
+                      {reviewer.name}
+                    </Link>
+                    <span className="text-[9px] text-foreground-muted">{reviewer.role}</span>
+                  </div>
+                </div>
+                <p className="text-[10px] text-foreground-secondary leading-relaxed mb-4">
+                  {reviewer.bio}
+                </p>
+                <div className="space-y-1.5 border-t border-border/60 pt-3">
+                  {reviewer.credentials.slice(0, 1).map(c => (
+                    <span key={c} className="block text-[8px] text-foreground-muted">
+                      🏅 {c}
+                    </span>
+                  ))}
+                  <a href={`mailto:${reviewer.email}`} className="block text-[9px] text-accent hover:underline mt-1">
+                    ✉️ {reviewer.email}
+                  </a>
+                </div>
+              </div>
+            )}
+
+            {/* Related Articles */}
+            {relatedArticles.length > 0 && (
+              <div className="bg-surface border border-border rounded-xl p-5 shadow-sm">
+                <h3 className="text-xs font-bold font-display text-foreground uppercase tracking-wider mb-3">Recommended</h3>
+                <div className="space-y-4">
+                  {relatedArticles.map(art => (
+                    <div key={art.id} className="border-b border-border/60 pb-3 last:border-b-0 last:pb-0">
+                      <span className="text-[9px] text-foreground-muted block mb-1">{art.category}</span>
+                      <Link href={`/blog/${art.slug}`} className="text-xs font-bold font-display text-foreground hover:text-primary leading-tight transition block">
+                        {art.title}
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      
+      <Footer />
+    </main>
+  )
+}

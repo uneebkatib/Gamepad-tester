@@ -35,8 +35,8 @@ export default function Navigation() {
   const links = [
     { href: '/', label: 'Home' },
     { href: '/diagnostics', label: 'Diagnostics' },
-    { href: '/compatibility', label: 'Compatibility' },
     { href: '/troubleshooting', label: 'Help' },
+    { href: '/blog', label: 'Blog' },
     { href: '/about', label: 'About' },
   ]
 

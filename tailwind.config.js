@@ -36,7 +36,9 @@ module.exports = {
         warning: 'var(--warning)',
       },
       fontFamily: {
-        sans: ['Arial', 'Helvetica', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Outfit', '"Plus Jakarta Sans"', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
       animation: {
         glow: 'glow 2s ease-in-out infinite',

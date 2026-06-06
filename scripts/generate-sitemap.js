@@ -13,9 +13,11 @@ const baseUrl = 'https://gamepadtester.live'
 const routes = [
   { path: '/', priority: 1.0, changefreq: 'weekly' },
   { path: '/diagnostics', priority: 0.8, changefreq: 'weekly' },
-  { path: '/compatibility', priority: 0.7, changefreq: 'monthly' },
   { path: '/troubleshooting', priority: 0.8, changefreq: 'monthly' },
   { path: '/about', priority: 0.6, changefreq: 'yearly' },
+  { path: '/privacy', priority: 0.5, changefreq: 'yearly' },
+  { path: '/terms', priority: 0.5, changefreq: 'yearly' },
+  { path: '/contact', priority: 0.7, changefreq: 'monthly' },
 ]
 
 const generateSitemap = () => {

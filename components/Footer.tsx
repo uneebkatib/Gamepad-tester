@@ -35,8 +35,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/compatibility" className="hover:text-accent transition">
-                  Compatibility
+                <Link href="/blog" className="hover:text-accent transition">
+                  Blog &amp; Guides
                 </Link>
               </li>
             </ul>
@@ -57,14 +57,19 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition">
+                <Link href="/privacy" className="hover:text-accent transition">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition">
-                  Terms of Service
-                </a>
+                <Link href="/terms" className="hover:text-accent transition">
+                  Terms of Use
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-accent transition">
+                  Contact Us
+                </Link>
               </li>
             </ul>
           </div>
@@ -74,12 +79,12 @@ export default function Footer() {
         <div className="border-t border-border pt-8 flex justify-between items-center text-sm text-foreground-muted">
           <p>&copy; {currentYear} GamepadTester.live. All rights reserved.</p>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-accent transition">
+            <Link href="/privacy" className="hover:text-accent transition">
               Privacy
-            </a>
-            <a href="#" className="hover:text-accent transition">
+            </Link>
+            <Link href="/terms" className="hover:text-accent transition">
               Terms
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -64,10 +64,10 @@ function StickCircle({x=0,y=0,label='',paths=[],showPaths=false,testCirc=false}:
             </>
           )}
         </svg>
-        {t&&<span style={{position:'absolute',top:1,left:'50%',transform:'translateX(-50%)',fontSize:9,fontFamily:'monospace',color:'var(--foreground-muted)'}}>{t}%</span>}
-        {b&&<span style={{position:'absolute',bottom:1,left:'50%',transform:'translateX(-50%)',fontSize:9,fontFamily:'monospace',color:'var(--foreground-muted)'}}>{b}%</span>}
-        {l&&<span style={{position:'absolute',top:'50%',left:0,transform:'translateY(-50%)',fontSize:9,fontFamily:'monospace',color:'var(--foreground-muted)'}}>{l}%</span>}
-        {r&&<span style={{position:'absolute',top:'50%',right:0,transform:'translateY(-50%)',fontSize:9,fontFamily:'monospace',color:'var(--foreground-muted)'}}>{r}%</span>}
+        {t&&<span style={{position:'absolute',top:1,left:'50%',transform:'translateX(-50%)',fontSize:9,fontFamily:'var(--font-mono), monospace',color:'var(--foreground-muted)'}}>{t}%</span>}
+        {b&&<span style={{position:'absolute',bottom:1,left:'50%',transform:'translateX(-50%)',fontSize:9,fontFamily:'var(--font-mono), monospace',color:'var(--foreground-muted)'}}>{b}%</span>}
+        {l&&<span style={{position:'absolute',top:'50%',left:0,transform:'translateY(-50%)',fontSize:9,fontFamily:'var(--font-mono), monospace',color:'var(--foreground-muted)'}}>{l}%</span>}
+        {r&&<span style={{position:'absolute',top:'50%',right:0,transform:'translateY(-50%)',fontSize:9,fontFamily:'var(--font-mono), monospace',color:'var(--foreground-muted)'}}>{r}%</span>}
       </div>
       <div style={{fontSize:10,fontWeight:600,color:'var(--foreground-muted)'}}>{label}</div>
     </div>
@@ -173,7 +173,7 @@ export default function GamepadTester() {
             <div>
               <div style={{fontSize:18,fontWeight:700,color:'var(--foreground)'}}>Virtual Controller {sel+1}</div>
               <div style={{fontSize:11,fontWeight:700,color:'var(--primary)',textTransform:'uppercase',letterSpacing:1,marginTop:2}}>{names[sel]||'Unknown Controller'}</div>
-              <div style={{display:'flex',gap:24,marginTop:6,fontSize:10,color:'var(--foreground-muted)',fontFamily:'monospace'}}>
+              <div style={{display:'flex',gap:24,marginTop:6,fontSize:10,color:'var(--foreground-muted)',fontFamily:'var(--font-mono), monospace'}}>
                 <span>Mapping: <span style={{color:'var(--foreground-secondary)'}}>{gd.mapping}</span></span>
                 <span>Timestamp: <span style={{color:'var(--foreground-secondary)'}}>{gd.ts.toFixed(10)}</span></span>
               </div>
@@ -194,7 +194,7 @@ export default function GamepadTester() {
                     transition:'all .07s',cursor:'default',minHeight:40
                   }}>
                     <span style={{fontWeight:700,fontSize:9,lineHeight:1}}>B{i}</span>
-                    <span style={{fontFamily:'monospace',fontSize:8,marginTop:3,opacity:.85}}>{b.value.toFixed(2)}</span>
+                    <span style={{fontFamily:'var(--font-mono), monospace',fontSize:8,marginTop:3,opacity:.85}}>{b.value.toFixed(2)}</span>
                   </div>
                 ))}
               </div>
@@ -214,7 +214,7 @@ export default function GamepadTester() {
               <div style={{display:'flex',flexWrap:'wrap',gap:4,minHeight:28,maxHeight:52,overflow:'hidden'}}>
                 {hist.length===0
                   ?<span style={{fontSize:10,color:'var(--foreground-muted)',fontStyle:'italic'}}>Press buttons to see history…</span>
-                  :hist.map((h,i)=><span key={i} style={{padding:'2px 6px',background:'rgba(16,185,129,.15)',color:'var(--success)',border:'1px solid rgba(16,185,129,.3)',borderRadius:4,fontSize:9,fontFamily:'monospace',fontWeight:700}}>{h}</span>)
+                  :hist.map((h,i)=><span key={i} style={{padding:'2px 6px',background:'rgba(16,185,129,.15)',color:'var(--success)',border:'1px solid rgba(16,185,129,.3)',borderRadius:4,fontSize:9,fontFamily:'var(--font-mono), monospace',fontWeight:700}}>{h}</span>)
                 }
               </div>
             </div>
@@ -275,7 +275,7 @@ export default function GamepadTester() {
               {[['AXIS 0 (X)',gd.axes[0]||0],['AXIS 1 (Y)',gd.axes[1]||0],['AXIS 2 (X)',gd.axes[2]||0],['AXIS 3 (Y)',gd.axes[3]||0]].map(([lbl,v],i)=>(
                 <div key={i} style={{textAlign:'center'}}>
                   <div style={{fontSize:9,color:'var(--foreground-muted)',textTransform:'uppercase',fontWeight:600}}>{lbl as string}</div>
-                  <div style={{fontFamily:'monospace',fontSize:11,fontWeight:700,marginTop:2,color:Math.abs(v as number)>0.05?'var(--primary)':'var(--foreground-secondary)'}}>
+                  <div style={{fontFamily:'var(--font-mono), monospace',fontSize:11,fontWeight:700,marginTop:2,color:Math.abs(v as number)>0.05?'var(--primary)':'var(--foreground-secondary)'}}>
                     {(v as number)>=0?'+':''}{(v as number).toFixed(5)}
                   </div>
                 </div>
