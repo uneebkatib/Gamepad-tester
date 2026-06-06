@@ -1295,6 +1295,7 @@ export default function HomepageContent() {
 
     return allSectionIds.filter(id => {
       const sec = rawData[id]
+      if (!sec) return false
       return sec.title.toLowerCase().includes(query) || sec.content.some(p => p.toLowerCase().includes(query))
     })
   }
