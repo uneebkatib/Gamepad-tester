@@ -9,6 +9,7 @@ const config = {
       queue: "dummy",
     },
   },
+  buildCommand: "npx next build",
   edgeExternals: ["node:crypto"],
   middleware: {
     external: true,
