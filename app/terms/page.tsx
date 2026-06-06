@@ -3,8 +3,11 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Terms of Use | GamepadTester.live',
+  title: 'Terms of Use',
   description: 'Read the Terms of Use for GamepadTester.live. Our browser-based controller diagnostics tool is provided free of charge.',
+  alternates: {
+    canonical: 'https://gamepadtester.live/terms',
+  },
 }
 
 export default function TermsPage() {

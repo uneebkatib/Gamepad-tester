@@ -8,7 +8,10 @@ import GamepadIcon from '@/components/GamepadIcon'
 
 export const metadata: Metadata = {
   title: 'Gamepad Tester - PS5, Xbox, Joystick & Controller',
-  description: 'Free gamepad tester for PS5 DualSense, Xbox Series, Switch Pro, and PC joysticks. Detect stick drift, test buttons and triggers in your browser.',
+  description: 'Free gamepad tester for PS5, Xbox Series, Switch Pro, and PC joysticks. Detect stick drift, test buttons and triggers in your browser.',
+  alternates: {
+    canonical: 'https://gamepadtester.live',
+  },
 }
 
 export default function Home() {

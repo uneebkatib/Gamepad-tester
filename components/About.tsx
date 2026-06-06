@@ -10,7 +10,7 @@ export default function About() {
       role: 'Founder & Lead Controller Repair Technician',
       email: 'marcus.vance@gamepadtester.live',
       bio: 'Marcus has 12+ years of experience repairing and modding console controllers. He founded GamepadTester.live to build a free, zero-install diagnostic tool that gives everyday gamers access to lab-grade telemetry data.',
-      avatar: '/marcus-vance.png',
+      avatar: '/marcus-vance.jpg',
       badge: 'Founder'
     },
     {
@@ -19,7 +19,7 @@ export default function About() {
       role: 'Senior Hardware Systems Consultant',
       email: 'sarah.chen@gamepadtester.live',
       bio: 'An expert in electrical signal processing, Sarah consults on Bluetooth polling, micro-contact noise filters, and coordinates calibration algorithms to ensure browser measurement accuracy.',
-      avatar: '/sarah-chen.png',
+      avatar: '/sarah-chen.jpg',
       badge: 'Systems Consultant'
     },
     {
@@ -28,7 +28,7 @@ export default function About() {
       role: 'QA Hardware & Telemetry Engineer',
       email: 'alex.mercer@gamepadtester.live',
       bio: 'Alex benchmarks controller response behaviors and maintains our database of hardware vendor ID maps across 50+ gamepad models annually.',
-      avatar: '/alex-mercer.png',
+      avatar: '/alex-mercer.jpg',
       badge: 'QA Engineer'
     }
   ];
@@ -68,7 +68,7 @@ export default function About() {
 
           <div className="flex flex-col sm:flex-row gap-5 items-center bg-background/50 border border-border/80 rounded-2xl p-5 mt-4">
             <div className="relative w-16 h-16 rounded-full overflow-hidden border border-primary bg-surface flex-shrink-0">
-              <img src="/marcus-vance.png" alt="Marcus Vance portrait" className="w-full h-full object-cover" />
+              <img src="/marcus-vance.jpg" alt="Marcus Vance portrait" className="w-full h-full object-cover" />
             </div>
             <div className="space-y-1 text-center sm:text-left">
               <div className="flex items-center justify-center sm:justify-start gap-2">

@@ -10,7 +10,7 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState('All')
 
-  const categories = ['All', 'Hardware Mods', 'DIY Repair', 'Performance', 'Software API']
+  const categories = ['All', 'Hardware Mods', 'DIY Repair', 'Performance', 'Software API', 'Troubleshooting', 'Testing']
 
   const filteredArticles = articles.filter(art => {
     const matchesSearch = art.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -167,25 +167,37 @@ export default function BlogPage() {
                   const author = authors.find(a => a.id === art.authorId);
                   const reviewer = authors.find(a => a.id === art.reviewerId);
                   return (
-                    <div key={art.id} className="bg-surface border border-border rounded-xl p-5 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between">
-                      <div>
-                        <div className="flex justify-between items-center mb-3">
-                          <span className="bg-background border border-border/80 px-2 py-0.5 rounded text-[10px] text-foreground-muted font-medium">
-                            {art.icon} {art.category}
-                          </span>
-                          <span className="text-[10px] text-foreground-muted">{art.date}</span>
+                    <div key={art.id} className="bg-surface border border-border rounded-xl shadow-sm hover:shadow-md transition duration-300 flex flex-col overflow-hidden">
+                      {/* Hero thumbnail */}
+                      {art.heroImage && (
+                        <Link href={`/blog/${art.slug}`} className="block relative aspect-[2.2/1] w-full overflow-hidden bg-background">
+                          <img
+                            src={art.heroImage.src}
+                            alt={art.heroImage.alt}
+                            loading="lazy"
+                            className="w-full h-full object-cover hover:scale-105 transition duration-500"
+                          />
+                        </Link>
+                      )}
+                      <div className="p-5 flex flex-col flex-1 justify-between">
+                        <div>
+                          <div className="flex justify-between items-center mb-3">
+                            <span className="bg-background border border-border/80 px-2 py-0.5 rounded text-[10px] text-foreground-muted font-medium">
+                              {art.icon} {art.category}
+                            </span>
+                            <span className="text-[10px] text-foreground-muted">{art.date}</span>
+                          </div>
+                          
+                          <h3 className="text-base font-bold font-display text-foreground mb-2 leading-snug hover:text-primary transition">
+                            <Link href={`/blog/${art.slug}`}>
+                              {art.title}
+                            </Link>
+                          </h3>
+                          
+                          <p className="text-xs text-foreground-muted leading-relaxed line-clamp-3 mb-4">
+                            {art.summary}
+                          </p>
                         </div>
-                        
-                        <h3 className="text-base font-bold font-display text-foreground mb-2 leading-snug hover:text-primary transition">
-                          <Link href={`/blog/${art.slug}`}>
-                            {art.title}
-                          </Link>
-                        </h3>
-                        
-                        <p className="text-xs text-foreground-muted leading-relaxed line-clamp-3 mb-4">
-                          {art.summary}
-                        </p>
-                      </div>
                       
                       <div>
                         {/* Fact Check Banner */}
@@ -215,13 +227,14 @@ export default function BlogPage() {
                         </div>
                         
                         <div className="flex justify-between items-center pt-2">
-                          <span className="text-[10px] text-foreground-muted">{art.readTime}</span>
-                          <Link
-                            href={`/blog/${art.slug}`}
-                            className="text-xs font-semibold text-primary hover:text-primary-hover flex items-center gap-1 transition"
-                          >
-                            Read Article ➔
-                          </Link>
+                            <span className="text-[10px] text-foreground-muted">{art.readTime}</span>
+                            <Link
+                              href={`/blog/${art.slug}`}
+                              className="text-xs font-semibold text-primary hover:text-primary-hover flex items-center gap-1 transition"
+                            >
+                              Read Article ➔
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>

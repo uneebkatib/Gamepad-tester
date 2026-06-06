@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
  :root {
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --font-mono: var(--font-jetbrains-mono), 'Courier New', monospace;
   --background: #F9F8F5;
   --background-light: #FFFFFF;
   --background-dark: #F0EFE9;
@@ -74,17 +72,17 @@ html {
 
 body {
   @apply bg-background text-foreground antialiased;
-  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-plus-jakarta-sans), 'Inter', system-ui, -apple-system, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-outfit), var(--font-plus-jakarta-sans), system-ui, -apple-system, sans-serif;
   letter-spacing: -0.02em;
 }
 
 .font-mono {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-family: var(--font-jetbrains-mono), 'Courier New', monospace;
 }
 
 .container-custom {

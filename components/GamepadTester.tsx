@@ -104,7 +104,9 @@ export default function GamepadTester() {
         if(gp && gp.connected){
           s[x]=true
           const id=(gp as any).id||''
-          n[x]=id.split('(')[0].trim().slice(0,28)||'Gamepad'
+          const parts = id.split('(')
+          const firstPart = parts[0] || ''
+          n[x]=firstPart.trim().slice(0,28)||'Gamepad'
           i[x]=id
         }
       }

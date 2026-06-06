@@ -28,7 +28,12 @@ export default function Diagnostics() {
       const s=[false,false,false,false], n=['','','','']
       for(let i=0;i<4;i++){
         const gp = gps[i]
-        if(gp && gp.connected){ s[i]=true; n[i]=((gp as any).id||'').split('(')[0].trim()||'Gamepad' }
+        if(gp && gp.connected){ 
+          s[i]=true
+          const parts = ((gp as any).id||'').split('(')
+          const firstPart = parts[0] || ''
+          n[i]=firstPart.trim()||'Gamepad' 
+        }
       }
       setStatus(s); setNames(n)
     } catch(e){}

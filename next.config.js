@@ -22,28 +22,88 @@ const copyFiles = () => {
 
   const filesToCopy = [
     {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\5212aa4b-d1a9-4892-ad1d-16d0452d0bb7\\controller_stick_drift_fix_1780758154046.png',
+      dest: path.join(__dirname, 'public', 'controller-stick-drift-fix.png')
+    },
+    {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\5212aa4b-d1a9-4892-ad1d-16d0452d0bb7\\calibration_lab_1780753142653.png',
+      dest: path.join(__dirname, 'public', 'calibration-lab.png')
+    },
+    {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\5212aa4b-d1a9-4892-ad1d-16d0452d0bb7\\potentiometer_close_up_1780753708432.png',
+      dest: path.join(__dirname, 'public', 'potentiometer-close-up.png')
+    },
+    {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\5212aa4b-d1a9-4892-ad1d-16d0452d0bb7\\hall_effect_sensor_1780753724729.png',
+      dest: path.join(__dirname, 'public', 'hall-effect-sensor.png')
+    },
+    {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\5212aa4b-d1a9-4892-ad1d-16d0452d0bb7\\diagnostic_cleaning_1780753741936.png',
+      dest: path.join(__dirname, 'public', 'diagnostic-cleaning.png')
+    },
+    {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\5212aa4b-d1a9-4892-ad1d-16d0452d0bb7\\hall_effect_soldering_install_1780754942423.png',
+      dest: path.join(__dirname, 'public', 'hall-effect-install.png')
+    },
+    {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\5212aa4b-d1a9-4892-ad1d-16d0452d0bb7\\wireless_latency_benchmark_1780754953965.png',
+      dest: path.join(__dirname, 'public', 'wireless-latency-benchmark.png')
+    },
+    {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\5212aa4b-d1a9-4892-ad1d-16d0452d0bb7\\dualsense_haptic_browser_test_1780754965886.png',
+      dest: path.join(__dirname, 'public', 'dualsense-haptic-test.png')
+    },
+    {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\5212aa4b-d1a9-4892-ad1d-16d0452d0bb7\\carbon_track_microscope_1780754978036.png',
+      dest: path.join(__dirname, 'public', 'carbon-track-microscope.png')
+    },
+    {
       src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\8c71c136-8ba5-4cb3-9a0a-53e289fee56d\\marcus_vance_portrait_1780742587637.png',
       dest: path.join(__dirname, 'public', 'marcus-vance.png')
+    },
+    {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\8c71c136-8ba5-4cb3-9a0a-53e289fee56d\\marcus_vance_portrait_1780742587637.png',
+      dest: path.join(__dirname, 'public', 'marcus-vance.jpg')
     },
     {
       src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\8c71c136-8ba5-4cb3-9a0a-53e289fee56d\\sarah_chen_portrait_1780742605950.png',
       dest: path.join(__dirname, 'public', 'sarah-chen.png')
     },
     {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\8c71c136-8ba5-4cb3-9a0a-53e289fee56d\\sarah_chen_portrait_1780742605950.png',
+      dest: path.join(__dirname, 'public', 'sarah-chen.jpg')
+    },
+    {
       src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\8c71c136-8ba5-4cb3-9a0a-53e289fee56d\\alex_mercer_portrait_1780742624231.png',
       dest: path.join(__dirname, 'public', 'alex-mercer.png')
+    },
+    {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\8c71c136-8ba5-4cb3-9a0a-53e289fee56d\\alex_mercer_portrait_1780742624231.png',
+      dest: path.join(__dirname, 'public', 'alex-mercer.jpg')
     },
     {
       src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\8c71c136-8ba5-4cb3-9a0a-53e289fee56d\\marcus_workshop_1780742937800.png',
       dest: path.join(__dirname, 'public', 'marcus-workshop.png')
     },
     {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\8c71c136-8ba5-4cb3-9a0a-53e289fee56d\\marcus_workshop_1780742937800.png',
+      dest: path.join(__dirname, 'public', 'marcus-workshop.jpg')
+    },
+    {
       src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\8c71c136-8ba5-4cb3-9a0a-53e289fee56d\\sarah_workshop_1780742957658.png',
       dest: path.join(__dirname, 'public', 'sarah-workshop.png')
     },
     {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\8c71c136-8ba5-4cb3-9a0a-53e289fee56d\\sarah_workshop_1780742957658.png',
+      dest: path.join(__dirname, 'public', 'sarah-workshop.jpg')
+    },
+    {
       src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\8c71c136-8ba5-4cb3-9a0a-53e289fee56d\\alex_workshop_1780742976150.png',
       dest: path.join(__dirname, 'public', 'alex-workshop.png')
+    },
+    {
+      src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\8c71c136-8ba5-4cb3-9a0a-53e289fee56d\\alex_workshop_1780742976150.png',
+      dest: path.join(__dirname, 'public', 'alex-workshop.jpg')
     },
     {
       src: 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\8c71c136-8ba5-4cb3-9a0a-53e289fee56d\\about_page_top_1780744390096.png',

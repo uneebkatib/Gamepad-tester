@@ -30,8 +30,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/diagnostics" className="hover:text-accent transition">
-                  Diagnostics
+                <Link href="/calibration" className="hover:text-accent transition">
+                  Calibration
                 </Link>
               </li>
               <li>

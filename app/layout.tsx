@@ -1,13 +1,35 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
+import { Outfit, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-outfit',
+  display: 'swap',
+})
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-plus-jakarta-sans',
+  display: 'swap',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
+})
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gamepadtester.live'
 
 export const metadata: Metadata = {
   title: {
-    default: 'GamepadTester.live - Professional Gamepad Tester & Diagnostics',
-    template: '%s | GamepadTester.live',
+    default: 'Professional Gamepad Tester & Diagnostics',
+    template: '%s',
   },
   description:
     'Test your gamepad/controller with advanced diagnostics, compatibility checking, and troubleshooting guides. Support for all gaming controllers.',
@@ -30,7 +52,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: baseUrl,
-    title: 'GamepadTester.live - Professional Gamepad Tester & Diagnostics',
+    title: 'Professional Gamepad Tester & Diagnostics',
     description:
       'Test your gamepad/controller with advanced diagnostics, compatibility checking, and troubleshooting guides.',
     siteName: 'GamepadTester.live',
@@ -45,7 +67,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GamepadTester.live - Professional Gamepad Tester',
+    title: 'Professional Gamepad Tester',
     description: 'Test your gamepad with advanced diagnostics and compatibility checking.',
     images: [`${baseUrl}/twitter-image.png`],
   },
@@ -61,9 +83,6 @@ export const metadata: Metadata = {
     },
   },
   category: 'technology',
-  alternates: {
-    canonical: baseUrl,
-  },
 }
 
 export const viewport: Viewport = {
@@ -80,10 +99,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${outfit.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
-        <link rel="canonical" href={baseUrl} />
         <link rel="alternate" hrefLang="en" href={baseUrl} />
 
         {/* Google Analytics (gtag.js) */}

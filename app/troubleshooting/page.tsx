@@ -4,9 +4,12 @@ import Troubleshooting from '@/components/Troubleshooting'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Troubleshooting',
+  title: 'Controller Troubleshooting & Drift Fixes',
   description:
-    'Find solutions to common gamepad issues. Driver guides, compatibility information, and FAQs for all platforms.',
+    'Expert-reviewed guides to fix controller stick drift, Bluetooth latency, incorrect button mappings, and device connection errors on PC, Mac, and consoles.',
+  alternates: {
+    canonical: 'https://gamepadtester.live/troubleshooting',
+  },
 }
 
 export default function TroubleshootingPage() {

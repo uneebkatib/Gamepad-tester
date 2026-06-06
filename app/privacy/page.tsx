@@ -3,8 +3,11 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | GamepadTester.live',
+  title: 'Privacy Policy',
   description: 'Learn about our privacy policy. GamepadTester.live does not collect, store, or share any controller telemetry or personal data.',
+  alternates: {
+    canonical: 'https://gamepadtester.live/privacy',
+  },
 }
 
 export default function PrivacyPage() {

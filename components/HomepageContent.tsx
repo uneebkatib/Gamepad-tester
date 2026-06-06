@@ -1605,7 +1605,7 @@ export default function HomepageContent() {
           >
             <div className="relative aspect-video w-full overflow-hidden bg-surface">
               <img 
-                src="/marcus-workshop.png" 
+                src="/marcus-workshop.jpg" 
                 alt="Marcus Vance soldering a PS5 controller in the hardware lab" 
                 className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
               />
@@ -1628,7 +1628,7 @@ export default function HomepageContent() {
           >
             <div className="relative aspect-video w-full overflow-hidden bg-surface">
               <img 
-                src="/sarah-workshop.png" 
+                src="/sarah-workshop.jpg" 
                 alt="Sarah Chen testing input latency on Xbox controllers in lab" 
                 className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
               />
@@ -1651,7 +1651,7 @@ export default function HomepageContent() {
           >
             <div className="relative aspect-video w-full overflow-hidden bg-surface">
               <img 
-                src="/alex-workshop.png" 
+                src="/alex-workshop.jpg" 
                 alt="Alex Mercer testing Gamepad API vibration on PC" 
                 className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
               />

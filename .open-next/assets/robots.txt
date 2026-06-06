@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Disallow: /api/private
+Disallow: /.well-known
+
+# Sitemaps
+Sitemap: https://gamepadtester.live/sitemap.xml
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
