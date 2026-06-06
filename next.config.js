@@ -9,6 +9,11 @@ try {
 }
 
 const copyFiles = () => {
+  // Skip in CI/CD environments like Cloudflare Pages
+  if (process.env.CF_PAGES || process.env.CI) {
+    return;
+  }
+
   const brainDir = 'C:\\Users\\Administrator\\.gemini\\antigravity\\brain\\8c71c136-8ba5-4cb3-9a0a-53e289fee56d';
   const artifactsDir = path.join(brainDir, 'artifacts');
   if (!fs.existsSync(artifactsDir)) {
@@ -75,6 +80,11 @@ const copyFiles = () => {
 copyFiles();
 
 const deleteCompatibilityRoute = () => {
+  // Skip in CI/CD environments like Cloudflare Pages
+  if (process.env.CF_PAGES || process.env.CI) {
+    return;
+  }
+
   const compatibilityPath = path.join(__dirname, 'app', 'compatibility');
   if (fs.existsSync(compatibilityPath)) {
     try {
