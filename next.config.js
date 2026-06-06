@@ -79,24 +79,25 @@ const copyFiles = () => {
 
 copyFiles();
 
-const deleteCompatibilityRoute = () => {
-  // Skip in CI/CD environments like Cloudflare Pages
-  if (process.env.CF_PAGES || process.env.CI) {
-    return;
-  }
+const cleanUnwantedRoutes = () => {
+  const routesToDelete = [
+    path.join(__dirname, 'app', 'compatibility'),
+    path.join(__dirname, 'app', 'blog', 'slug')
+  ];
 
-  const compatibilityPath = path.join(__dirname, 'app', 'compatibility');
-  if (fs.existsSync(compatibilityPath)) {
-    try {
-      fs.rmSync(compatibilityPath, { recursive: true, force: true });
-      console.log(`[Cleaner] Successfully deleted ${compatibilityPath}`);
-    } catch (err) {
-      console.error(`[Cleaner] Error deleting ${compatibilityPath}:`, err);
+  routesToDelete.forEach((routePath) => {
+    if (fs.existsSync(routePath)) {
+      try {
+        fs.rmSync(routePath, { recursive: true, force: true });
+        console.log(`[Cleaner] Successfully deleted ${routePath}`);
+      } catch (err) {
+        console.error(`[Cleaner] Error deleting ${routePath}:`, err);
+      }
     }
-  }
+  });
 };
 
-deleteCompatibilityRoute();
+cleanUnwantedRoutes();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
